@@ -28,6 +28,7 @@ const App = () => {
         setTempInfo(myNewWeatherInfo);
     } catch(error){
       alert("City not Found ");
+      setSearchValue("");
       //console.log(error);
     }
    };

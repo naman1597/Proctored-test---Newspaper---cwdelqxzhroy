@@ -28,7 +28,7 @@ const Weathercard = ({tempInfo}) => {
               }
           }
       },[weathermood])
-      //converting the seconds into time
+      
      
   return (
     <>
