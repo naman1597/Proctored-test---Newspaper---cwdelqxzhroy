@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 const Weathercard = ({tempInfo}) => {
+    
     const [weatherState, setWeatherState] = React.useState("");
     const{
         temp,
@@ -9,25 +10,7 @@ const Weathercard = ({tempInfo}) => {
         country,
       } = tempInfo;
 
-      useEffect(() =>{
-          if(weathermood){
-              switch(weathermood){
-                  case "Clouds": setWeatherState("wi-day-cloudy");
-                  break;
-                  case "Haze": setWeatherState("wi-fog");
-                  break;
-                  case "Clear": setWeatherState("wi-day-sunny");
-                  break;
-                  case "Mist": setWeatherState("wi-dust");
-                  break;
-                  case "Rain": setWeatherState("wi-rain");
-                  break;
-                  default:
-                      setWeatherState("wi-day-sunny");
-                      break;
-              }
-          }
-      },[weathermood])
+     
       
      
   return (
@@ -56,6 +39,8 @@ const Weathercard = ({tempInfo}) => {
       
     </>
   )
+
+    
 }
 
 export default Weathercard

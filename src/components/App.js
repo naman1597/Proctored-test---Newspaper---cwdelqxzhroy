@@ -30,6 +30,7 @@ const App = () => {
         setTempInfo(myNewWeatherInfo);
     } catch(error){
       alert("City not Found ");
+      setTempInfo("");
       //console.log(error);
     }
     setSearchValue("");
@@ -39,16 +40,17 @@ const App = () => {
     let url1 = `https://gnews.io/api/v4/search?q=none&lang=${lang}&token=9a6932a1d156f2ab516e36eae9f043d1`
     const res = await fetch(url1);
     const data = await res.json();
-    const {title} = data.articles[0];
-    setDisplay(title);
+    const {title,description} = data.articles[0];
+    const newNewsInfo = {title,description}
+    setDisplay(newNewsInfo);
    }
-   function changeToEnglish(){
-    setLang(en);
-    getnewsInfo();
+   const changeToEnglish= async () =>{
+    setLang("en");
+   getnewsInfo();
    }
-   function changeToHindi(){
-    setLang(hi);
-    getnewsInfo();
+   const changeToHindi = async () =>{
+    setLang("hi");
+   getnewsInfo();
    }
 
   useEffect(() => {
@@ -67,11 +69,12 @@ const App = () => {
           <button className='searchButton' type='button' onClick={getWeatherInfo}>Search</button>
         </div>
     </div>
-    <div>{display}</div>
+   <Weathercard tempInfo={tempInfo}/>
+   <div>{display.title}</div>
+   <div>{display.description}</div>
 
-    
-   
-      <Weathercard tempInfo={tempInfo}/>
+    <button data-testid='lang-en' onClick={changeToEnglish}>English</button>
+    <button data-testid='lang-hi' onClick={changeToHindi}>Hindi</button>
     </>
   )
 }
