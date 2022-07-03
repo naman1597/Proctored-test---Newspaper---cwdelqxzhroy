@@ -5,8 +5,8 @@ import '../styles/App.css';
 const App = () => {
   const [searchValue, setSearchValue] = useState("Delhi");
   const [tempInfo, setTempInfo] = useState({});
-  //const [lang,setLang] = useState("en")
-  //const [display,setDisplay] = useState("");
+  const [lang,setLang] = useState("en")
+  const [display,setDisplay] = useState("");
 
   const getWeatherInfo = async () => {
     try{
@@ -36,7 +36,7 @@ const App = () => {
     setSearchValue("");
    };
 
-   /*const getnewsInfo = async ()=>{
+   const getNewsInfo = async ()=>{
     let url1 = `https://gnews.io/api/v4/search?q=none&lang=${lang}&token=9a6932a1d156f2ab516e36eae9f043d1`
     const res = await fetch(url1);
     const data = await res.json();
@@ -46,16 +46,19 @@ const App = () => {
    }
    const changeToEnglish= async () =>{
     setLang("en");
-   getnewsInfo();
+   getNewsInfo();
    }
    const changeToHindi = async () =>{
     setLang("hi");
-   getnewsInfo();
-   }*/
+   getNewsInfo();
+   }
 
   useEffect(() => {
     getWeatherInfo();
-   // getnewsInfo();
+  },[]);
+
+  useEffect(() =>{
+    getNewsInfo();
   },[]);
   return (
     <>
@@ -70,7 +73,11 @@ const App = () => {
         </div>
     </div>
    <Weathercard tempInfo={tempInfo}/>
+   <div>{display.title}</div>
+   <div>{display.description}</div>
 
+    <button data-testid='lang-en' onClick={changeToEnglish}>English</button>
+    <button data-testid='lang-hi' onClick={changeToHindi}>Hindi</button>
     </>
   )
 }
