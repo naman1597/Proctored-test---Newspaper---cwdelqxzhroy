@@ -2,7 +2,7 @@ import React from 'react'
 
 const Weathercard = ({tempInfo}) => {
     
-    const [weatherState, setWeatherState] = React.useState("");
+    
     const{
         temp,
         weathermood,
@@ -17,9 +17,7 @@ const Weathercard = ({tempInfo}) => {
     <>
      {/*our temp card*/}
      <article className='widget'>
-      <div className='weatherIcon'>
-      <i className={`wi ${weatherState}`}></i>
-        </div>
+    
 
       <div className='weatherInfo'>
         <div className='temperature'>
