@@ -69,8 +69,7 @@ const App = () => {
     </div>
     <div>{display}</div>
 
-    <button data-testid='lang-en' onClick={changeToEnglish}>English</button>
-    <button data-testid='lang-hi' onClick={changeToHindi}>Hindi</button>
+    
    
       <Weathercard tempInfo={tempInfo}/>
     </>
